@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
-import { parseRug } from '../src/index.js';
+import parseRug from '../src/index.js';
 
 test('basic text parsing', async (t) => {
   const input = `Hello world!

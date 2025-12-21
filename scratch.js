@@ -2,11 +2,19 @@
 import parseRug from './src/index.js';
 
 const txt = `
-:prop="val" foo
+hello world
+this is below
 
-:foo and also here
+and so is this.
 
-#id and here
+   and this is really indented.
+
+
+.container.mx-4
+  But this is within a container
+  .card.p-2
+    Nested content
+    with multiple lines
 `;
 
 console.log('\n=== Output ===');

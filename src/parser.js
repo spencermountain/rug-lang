@@ -11,7 +11,6 @@ export class RugParser {
     const lines = input.split('\n');
     let buffer = [];
     let indentStack = []; // Stack to track nested divs
-    let currentNestLevel = 0;
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];

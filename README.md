@@ -1,4 +1,8 @@
-A markup language for thoughtlessly writing <a href="https://en.wikipedia.org/wiki/Literate_programming"><i>literate</i></a> html, inspired by [pug-js](https://pugjs.org/api/getting-started.html)
+An experimental markup language for thoughtlessly writing html, inspired by [pug-js](https://pugjs.org/api/getting-started.html) and <a href="https://en.wikipedia.org/wiki/Literate_programming"><i>literate programming</i></a>.
+
+it uses the `<pre>` tag to preserve whitespace when it appears meaningfully in the document, and supports the leading-period syntax for html tags.
+
+not ready for prime-time.
 
 ## Examples
 
