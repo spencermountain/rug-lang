@@ -1,0 +1,8 @@
+packages:
+  - demo
+
+# allow install/build scripts for these dependencies (pnpm blocks them by default)
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  fsevents: true

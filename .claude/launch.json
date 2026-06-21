@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "rug-demo",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "rug-demo", "dev"],
+      "autoPort": true,
+      "port": 3007
+    }
+  ]
+}

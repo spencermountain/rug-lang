@@ -10,11 +10,16 @@ and so is this.
    and this is really indented.
 
 
-.container.mx-4
-  But this is within a container
-  .card.p-2
-    Nested content
-    with multiple lines
+.container
+  this: is yaml
+  list:
+    - item 1
+    - item 2
+    - item 3
+  map:
+    key1: 1
+    key2: 'value2'
+    key3: 3
 `;
 
 console.log('\n=== Output ===');

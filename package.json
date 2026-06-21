@@ -6,23 +6,18 @@
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "exports": {
-    ".": "./src/index.js",
-    "./nuxt": "./nuxt/module.js"
+    ".": "./src/index.js"
   },
   "files": [
     "src",
     "builds",
     "README.md",
-    "nuxt",
     "syntaxes",
     "language-configuration.json"
   ],
   "scripts": {
-    "test": "node --test tests/parser.test.js",
-    "demo": "npx live-server --open=demo/index.html",
-    "build": "node scripts/build.js",
-    "watch": "node --watch scratch.js",
-    "prepublishOnly": "npm run test && npm run build"
+    "test": "node --test",
+    "watch": "node --watch scratch.js"
   },
   "keywords": [
     "markup"
@@ -35,7 +30,6 @@
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
-    "live-server": "^1.2.2",
     "rollup": "^4.12.0"
   },
   "contributes": {

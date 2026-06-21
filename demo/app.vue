@@ -71,7 +71,7 @@ body,
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: #1a1a1a;
-  background: #f4f5f7;
+  background: #eceef3;
 }
 .page {
   height: 100vh;
@@ -82,14 +82,18 @@ body {
   display: flex;
   align-items: baseline;
   gap: 0.6rem;
-  padding: 0.7rem 1rem;
-  background: #1a1a1a;
-  color: #fff;
+  padding: 0.85rem 1.5rem;
+  background: #fff;
+  color: #1a1a1a;
+  border-bottom: 1px solid #e6e8ee;
+  box-shadow: 0 2px 10px rgba(30, 27, 75, 0.06);
+  z-index: 1;
 }
 .bar h1 {
   margin: 0;
   font-size: 1.2rem;
   letter-spacing: 0.02em;
+  color: #4f46e5;
 }
 .bar .tag {
   font-size: 0.8rem;
@@ -104,26 +108,30 @@ body {
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: #ddd;
+  gap: 1.25rem;
+  padding: 1.25rem;
   min-height: 0;
 }
 .pane {
   display: flex;
   flex-direction: column;
   background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(30, 27, 75, 0.1), 0 1px 3px rgba(30, 27, 75, 0.08);
+  overflow: hidden;
   min-height: 0;
 }
 .pane-head {
   display: flex;
   gap: 0.4rem;
   align-items: center;
-  padding: 0.4rem 0.8rem;
+  padding: 0.55rem 0.9rem;
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #888;
-  border-bottom: 1px solid #eee;
+  color: #8a8f98;
+  background: #fafbfc;
+  border-bottom: 1px solid #eef0f3;
 }
 .toggle {
   font: inherit;
@@ -138,8 +146,8 @@ body {
   border-radius: 4px;
 }
 .toggle.on {
-  color: #1a1a1a;
-  background: #eee;
+  color: #4f46e5;
+  background: #eef0ff;
 }
 .editor,
 .output {
