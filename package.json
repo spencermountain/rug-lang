@@ -1,6 +1,6 @@
 {
   "name": "rug-lang",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "A minimal templating language with clean indentation-based syntax",
   "main": "src/index.js",
