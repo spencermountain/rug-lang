@@ -1,12 +1,18 @@
 {
   "name": "rug-lang",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "A minimal templating language with clean indentation-based syntax",
-  "main": "src/index.js",
+  "main": "builds/rug-lang.cjs",
+  "module": "builds/rug-lang.mjs",
+  "unpkg": "builds/rug-lang.min.js",
   "types": "src/index.d.ts",
   "exports": {
-    ".": "./src/index.js"
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./builds/rug-lang.mjs",
+      "require": "./builds/rug-lang.cjs"
+    }
   },
   "files": [
     "src",
@@ -16,6 +22,7 @@
     "language-configuration.json"
   ],
   "scripts": {
+    "build": "rollup -c",
     "test": "node --test",
     "watch": "node --watch scratch.js"
   },
@@ -23,7 +30,6 @@
     "markup"
   ],
   "author": "Spencer Kelly",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/spencermountain/rug-lang.git"
@@ -53,5 +59,6 @@
         "path": "./syntaxes/rug.tmLanguage.json"
       }
     ]
-  }
+  },
+  "license": "MIT"
 }
