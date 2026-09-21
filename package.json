@@ -24,19 +24,18 @@
   "scripts": {
     "build": "rollup -c",
     "test": "node --test",
-    "watch": "node --watch scratch.js"
+    "watch": "node --watch scratch.js",
+    "lint": "eslint ."
   },
   "keywords": [
     "markup"
   ],
-  "author": "Spencer Kelly",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/spencermountain/rug-lang.git"
-  },
+  "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
+  "repository": "github:spencermountain/rug-lang",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
-    "rollup": "^4.12.0"
+    "rollup": "^4.12.0",
+    "eslint": "10.10.0"
   },
   "contributes": {
     "languages": [
