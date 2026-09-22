@@ -2,3 +2,6 @@ allowBuilds:
   '@parcel/watcher': set this to true or false
   esbuild: set this to true or false
   fsevents: set this to true or false
+minimumReleaseAgeExclude:
+  - serialize-javascript@7.0.3
+  - serialize-javascript@7.0.5

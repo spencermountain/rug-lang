@@ -44,7 +44,11 @@ const readComponent = (lines, i, line) => {
 
   // inline body (bare or braced) is always a map; the block body may be a map
   // or, when it opens with `- `, a top-level array
-  const inlineProps = inline ? (inline[0] === '{' ? flowParser(inline).value() : flowParser(inline).implicitMap()) : null
+  let inlineProps = null
+  if (inline) {
+    inlineProps = inline[0] === '{' ? flowParser(inline).value() : flowParser(inline).implicitMap()
+  }
+
   const blockProps = bodyLines.some((l) => !isBlank(l)) ? parseStructure(toItems(bodyLines)) : null
 
   // Assemble properties by precedence: shorthand (lowest) < block < inline.
@@ -69,7 +73,7 @@ const readComponent = (lines, i, line) => {
     start: line.start,
     end: last.end,
     nameRange: [line.start, line.start + m[0].length],
-    bodyRange: bodyLines.length ? [bodyLines[0].start, last.end] : null,
+    bodyRange: bodyLines.length > 0 ? [bodyLines[0].start, last.end] : null
   }
   return { block, next: j }
 }

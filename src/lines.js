@@ -2,7 +2,7 @@
 // classifying each one. Only column-zero markers are special.
 
 // a component opens with a period + identifier at column zero (`.myThing`)
-const COMPONENT_RE = /^\.([A-Za-z_][\w-]*)/
+const COMPONENT_RE = /^\.([a-z_][\w-]*)/i
 
 // Split into lines, keeping each line's source offsets so blocks can report
 // `start`/`end` for syntax highlighting and language tooling.

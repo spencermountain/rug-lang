@@ -34,7 +34,7 @@ const parseShorthand = (s) => {
 
   const shorthand = {}
   if (id !== null) shorthand.id = id
-  if (classes.length) shorthand.class = classes.join(' ')
+  if (classes.length > 0) shorthand.class = classes.join(' ')
   return { shorthand, rest: s.slice(p) }
 }
 
