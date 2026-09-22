@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 // Block structure — the indented body of a component.
 //
 // `items` are the non-blank body lines, each `{indent, text}` where `text` has
@@ -22,7 +23,8 @@ const parseStructure = (items) => {
       const rest = ci === -1 ? '' : t.slice(ci + 1).trim()
       idx++
       if (rest === '') {
-        obj[key] = idx < items.length && items[idx].indent > indent ? parseNode(items[idx].indent) : null
+        obj[key] =
+          idx < items.length && items[idx].indent > indent ? parseNode(items[idx].indent) : null
       } else {
         obj[key] = parseFlowOrScalar(rest)
       }
@@ -37,7 +39,9 @@ const parseStructure = (items) => {
       const rest = t === '-' ? '' : t.slice(2).trim()
       idx++
       if (rest === '') {
-        arr.push(idx < items.length && items[idx].indent > indent ? parseNode(items[idx].indent) : null)
+        arr.push(
+          idx < items.length && items[idx].indent > indent ? parseNode(items[idx].indent) : null
+        )
       } else {
         arr.push(parseFlowOrScalar(rest))
       }

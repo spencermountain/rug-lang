@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 // Flow parser — the inline forms.
 //
 // Handles `{a: 1, b: 2}`, `[x, y, z]`, `"quoted"`, and the brace-less implicit
@@ -109,7 +110,7 @@ const flowParser = (s) => {
 
   return {
     value: () => parseValue(),
-    implicitMap: () => parseMap(false),
+    implicitMap: () => parseMap(false)
   }
 }
 

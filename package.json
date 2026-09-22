@@ -11,18 +11,23 @@
   },
   "exports": {
     ".": {
-      "types": "./src/index.d.ts",
-      "import": "./builds/rug-lang.mjs",
-      "require": "./builds/rug-lang.cjs"
+      "import": {
+        "types": "./src/index.d.ts",
+        "default": "./builds/rug-lang.mjs"
+      },
+      "require": {
+        "types": "./src/index.d.cts",
+        "default": "./builds/rug-lang.cjs"
+      }
     }
   },
   "main": "./builds/rug-lang.cjs",
   "module": "./builds/rug-lang.mjs",
-  "types": "./src/index.d.ts",
+  "types": "./src/index.d.cts",
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c",
-    "test": "node --test",
+    "test": "node tests/index.js",
     "watch": "node --watch scratch.js",
     "lint": "eslint ."
   },
@@ -38,7 +43,9 @@
   "devDependencies": {
     "@rollup/plugin-terser": "^1.0.0",
     "eslint": "10.11.0",
-    "rollup": "^4.63.4"
+    "rollup": "^4.63.4",
+    "tap-dancer": "^0.4.0",
+    "tape": "^5.10.2"
   },
   "unpkg": "builds/rug-lang.min.js",
   "contributes": {
