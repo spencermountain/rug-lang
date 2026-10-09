@@ -6,9 +6,6 @@
   "repository": "github:spencermountain/rug-lang",
   "author": "Spencer Kelly <spencermountain@gmail.com> (https://spencermountain.dev)",
   "type": "module",
-  "engines": {
-    "node": ">=18"
-  },
   "exports": {
     ".": {
       "import": {
@@ -25,8 +22,12 @@
   "module": "./builds/rug-lang.mjs",
   "types": "./src/index.d.cts",
   "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "build": "rollup -c",
+    "build": "node ./scripts/version.js && rollup -c",
+    "version": "node ./scripts/version.js",
     "test": "node tests/index.js",
     "watch": "node --watch scratch.js",
     "lint": "eslint ."

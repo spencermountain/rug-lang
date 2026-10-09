@@ -11,6 +11,8 @@
 declare function parseRug(input: string): parseRug.Block[]
 
 declare namespace parseRug {
+  export const version: string
+
   /**
    * A character offset range into the source string, `[start, end)`.
    */

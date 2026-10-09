@@ -16,6 +16,7 @@
 import { COMPONENT_RE, splitLines, isBlank, isIndented, isComment, isComponent } from './lines.js'
 import { flowParser } from './flow.js'
 import parseStructure from './structure.js'
+import version from './_version.js'
 import parseShorthand from './shorthand.js'
 
 // Turn a component's raw body lines into `{indent, text}` items, dropping
@@ -123,5 +124,7 @@ const parseRug = (input) => {
 
   return blocks
 }
+
+parseRug.version = version
 
 export default parseRug

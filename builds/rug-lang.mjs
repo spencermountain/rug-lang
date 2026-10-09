@@ -2,7 +2,7 @@
 // classifying each one. Only column-zero markers are special.
 
 // a component opens with a period + identifier at column zero (`.myThing`)
-const COMPONENT_RE = /^\.([A-Za-z_][\w-]*)/;
+const COMPONENT_RE = /^\.([a-z_][\w-]*)/i;
 
 // Split into lines, keeping each line's source offsets so blocks can report
 // `start`/`end` for syntax highlighting and language tooling.
@@ -31,14 +31,25 @@ const isComponent = (line) => COMPONENT_RE.test(line.text);
 // string, so `/buy`, `#fff`, `12:30`, `2026-06-21` survive untouched. Quote a
 // value to force it to a string (e.g. `"true"`, `"42"`).
 const coerceScalar = (s) => {
-  if (s === '' || s === 'null' || s === '~') return null
-  if (s === 'true') return true
-  if (s === 'false') return false
-  if (/^-?\d+$/.test(s)) return Number(s)
-  if (/^-?(?:\d+\.\d*|\.\d+)$/.test(s)) return Number(s)
+  if (s === '' || s === 'null' || s === '~') {
+    return null
+  }
+  if (s === 'true') {
+    return true
+  }
+  if (s === 'false') {
+    return false
+  }
+  if (/^-?\d+$/.test(s)) {
+    return Number(s)
+  }
+  if (/^-?(?:\d+\.\d*|\.\d+)$/.test(s)) {
+    return Number(s)
+  }
   return s
 };
 
+/* eslint-disable no-use-before-define */
 // Flow parser — the inline forms.
 //
 // Handles `{a: 1, b: 2}`, `[x, y, z]`, `"quoted"`, and the brace-less implicit
@@ -149,7 +160,7 @@ const flowParser = (s) => {
 
   return {
     value: () => parseValue(),
-    implicitMap: () => parseMap(false),
+    implicitMap: () => parseMap(false)
   }
 };
 
@@ -162,6 +173,7 @@ const parseFlowOrScalar = (raw) => {
   return coerceScalar(s)
 };
 
+/* eslint-disable no-use-before-define */
 // Block structure — the indented body of a component.
 //
 // `items` are the non-blank body lines, each `{indent, text}` where `text` has
@@ -185,7 +197,8 @@ const parseStructure = (items) => {
       const rest = ci === -1 ? '' : t.slice(ci + 1).trim();
       idx++;
       if (rest === '') {
-        obj[key] = idx < items.length && items[idx].indent > indent ? parseNode(items[idx].indent) : null;
+        obj[key] =
+          idx < items.length && items[idx].indent > indent ? parseNode(items[idx].indent) : null;
       } else {
         obj[key] = parseFlowOrScalar(rest);
       }
@@ -200,7 +213,9 @@ const parseStructure = (items) => {
       const rest = t === '-' ? '' : t.slice(2).trim();
       idx++;
       if (rest === '') {
-        arr.push(idx < items.length && items[idx].indent > indent ? parseNode(items[idx].indent) : null);
+        arr.push(
+          idx < items.length && items[idx].indent > indent ? parseNode(items[idx].indent) : null
+        );
       } else {
         arr.push(parseFlowOrScalar(rest));
       }
@@ -210,6 +225,8 @@ const parseStructure = (items) => {
 
   return items.length === 0 ? {} : parseNode(items[0].indent)
 };
+
+var version = '0.0.2';
 
 // Shorthand parser — Pug/Emmet-style id and class on a component's opening line.
 //
@@ -247,7 +264,7 @@ const parseShorthand = (s) => {
 
   const shorthand = {};
   if (id !== null) shorthand.id = id;
-  if (classes.length) shorthand.class = classes.join(' ');
+  if (classes.length > 0) shorthand.class = classes.join(' ');
   return { shorthand, rest: s.slice(p) }
 };
 
@@ -293,7 +310,11 @@ const readComponent = (lines, i, line) => {
 
   // inline body (bare or braced) is always a map; the block body may be a map
   // or, when it opens with `- `, a top-level array
-  const inlineProps = inline ? (inline[0] === '{' ? flowParser(inline).value() : flowParser(inline).implicitMap()) : null;
+  let inlineProps = null;
+  if (inline) {
+    inlineProps = inline[0] === '{' ? flowParser(inline).value() : flowParser(inline).implicitMap();
+  }
+
   const blockProps = bodyLines.some((l) => !isBlank(l)) ? parseStructure(toItems(bodyLines)) : null;
 
   // Assemble properties by precedence: shorthand (lowest) < block < inline.
@@ -318,7 +339,7 @@ const readComponent = (lines, i, line) => {
     start: line.start,
     end: last.end,
     nameRange: [line.start, line.start + m[0].length],
-    bodyRange: bodyLines.length ? [bodyLines[0].start, last.end] : null,
+    bodyRange: bodyLines.length > 0 ? [bodyLines[0].start, last.end] : null
   };
   return { block, next: j }
 };
@@ -368,5 +389,7 @@ const parseRug = (input) => {
 
   return blocks
 };
+
+parseRug.version = version;
 
 export { parseRug as default };
